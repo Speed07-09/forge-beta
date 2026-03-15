@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge - Exclusive Beta Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            400: '#a1a1aa',
+                            500: '#71717a',
+                            600: '#52525b',
+                            700: '#3f3f46',
+                            800: '#27272a',
+                            900: '#18181b',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .glass-card {
+            background: rgba(24, 24, 27, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen relative overflow-x-hidden">
+
+    <!-- Abstract Dark Background Elements -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div
+            class="absolute top-0 -left-10 w-80 h-80 bg-purple-900 rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-blob">
+        </div>
+        <div class="absolute top-0 -right-10 w-80 h-80 bg-blue-900 rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-blob"
+            style="animation-delay: 2s"></div>
+        <div class="absolute -bottom-10 left-20 w-80 h-80 bg-purple-900 rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-blob"
+            style="animation-delay: 4s"></div>
+    </div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-6 py-16 md:py-24 space-y-20 md:space-y-32">
+
+        <!-- 1. HERO SECTION -->
+        <section class="text-center animate-fade-in space-y-6">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-xs font-bold tracking-widest uppercase mb-4">
+                <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+                Invite Only
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+                YOU'RE INVITED TO BETA TEST <span
+                    class="bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">FORGE</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-light text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+                Join 15 hand-picked testers shaping the future of AI fitness. Your feedback determines if we launch.
+            </p>
+            <div class="pt-6">
+                <a href="#apply"
+                    class="inline-block bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+                    Apply for Beta Access
+                </a>
+            </div>
+        </section>
+
+        <!-- UI VISUAL -->
+        <section class="animate-fade-in flex flex-col items-center" style="animation-delay: 0.2s;">
+            <div class="relative mx-auto w-full max-w-sm">
+                <!-- Phone frame -->
+                <div class="relative rounded-3xl overflow-hidden border-4 border-zinc-800 shadow-2xl">
+                    <img src="forge-tracker-screenshot.png" alt="Forge habit tracker interface"
+                        class="w-full h-auto block" />
+                </div>
+                <!-- Glow effect behind phone -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 blur-3xl -z-10 rounded-full">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. WHY YOU'RE HERE SECTION -->
+        <section class="animate-fade-in" style="animation-delay: 0.3s;">
+            <h2 class="text-3xl font-bold mb-6">Why You?</h2>
+            <div class="glass-card p-6 md:p-8 rounded-2xl text-lg text-zinc-300 leading-relaxed font-light">
+                <p>You're not random. I hand-picked 15-20 people I trust to give honest feedback. Your input will shape
+                    whether Forge becomes a real product or stays an idea.</p>
+            </div>
+        </section>
+
+        <!-- 3. WHAT YOU GET (Benefits) -->
+        <section class="animate-fade-in" style="animation-delay: 0.4s;">
+            <h2 class="text-3xl font-bold mb-8">What's In It For You?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col items-start gap-4">
+                    <div class="text-4xl">🎁</div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">Full Free Access</h3>
+                        <p class="text-zinc-400">Test every feature. No limitations. Normally $15/mo.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col items-start gap-4">
+                    <div class="text-4xl">💰</div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">Lifetime 50% Discount</h3>
+                        <p class="text-zinc-400">If you give honest feedback, you get half-price forever when we launch.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col items-start gap-4">
+                    <div class="text-4xl">🏗️</div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">Shape the Product</h3>
+                        <p class="text-zinc-400">Your feedback directly influences what features we build. You're a
+                            co-creator.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col items-start gap-4">
+                    <div class="text-4xl">🎖️</div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">Beta Tester Badge</h3>
+                        <p class="text-zinc-400">Your name in the app credits. You were here from day one.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. WHAT WE'RE TESTING -->
+        <section class="animate-fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-3xl font-bold mb-8">What Is Forge?</h2>
+            <div class="space-y-4 max-w-xl">
+                <div class="flex items-start gap-4 glass-card p-6 rounded-xl">
+                    <div class="text-2xl mt-1">🤖</div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">AI-Personalized 30-Day Plans</h4>
+                        <p class="text-zinc-400 mt-1">Smart routines generated for your precise goals.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 glass-card p-6 rounded-xl">
+                    <div class="text-2xl mt-1">✅</div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Daily Habit Tracker with Streaks</h4>
+                        <p class="text-zinc-400 mt-1">Build unbreakable consistency and protect your streak.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 glass-card p-6 rounded-xl">
+                    <div class="text-2xl mt-1">📊</div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Transformation Dashboard</h4>
+                        <p class="text-zinc-400 mt-1">Visual insights into your progress and evolution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. WHAT WE NEED FROM YOU -->
+        <section class="animate-fade-in" style="animation-delay: 0.6s;">
+            <h2 class="text-3xl font-bold mb-6">The Commitment</h2>
+            <div class="glass-card p-6 md:p-8 rounded-2xl border-l-4 border-l-zinc-700">
+                <ul class="space-y-4 text-zinc-300">
+                    <li class="flex items-center gap-3">
+                        <span class="text-zinc-500 font-bold">•</span> Use the app for 14 days minimum
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="text-zinc-500 font-bold">•</span> Fill out a 5-min feedback survey weekly
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="text-zinc-500 font-bold">•</span> Tell us what sucks (we won't be offended)
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="text-zinc-500 font-bold">•</span> Answer: Would you pay $10/mo for this?
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6. THE APPLICATION FORM -->
+        <section id="apply" class="animate-fade-in pt-10" style="animation-delay: 0.7s;">
+            <div
+                class="glass-card p-8 md:p-10 rounded-3xl border border-zinc-700/50 shadow-2xl relative overflow-hidden">
+
+                <div
+                    class="absolute -top-32 -right-32 w-96 h-96 bg-blue-900 rounded-full mix-blend-screen filter blur-[100px] opacity-20 pointer-events-none">
+                </div>
+
+                <h2 class="text-3xl font-bold mb-2">Apply Now (15 Spots Available)</h2>
+                <p class="text-zinc-400 mb-8">First come, first served.</p>
+
+                <!-- Error Message -->
+            <div id="errorMessage" class="hidden mt-4 p-4 bg-red-900/20 border border-red-700 rounded-lg text-red-400 text-sm">
+  Something went wrong. Please try again.
+</div>
+
+<!-- Success Message -->
+<div id="successMessage" class="hidden mt-4 p-4 bg-emerald-900/20 border border-emerald-700 rounded-lg text-emerald-400 text-sm">
+  ✅ Application Received! We'll email you within 24 hours.
+</div>
+                
+                
+                <div id="successMessage"
+                    class="hidden mb-8 bg-emerald-900/20 border border-emerald-700 text-emerald-400 p-4 rounded-xl flex items-center gap-3">
+                    <span class="text-xl">✅</span>
+                    <p class="font-medium">Application Received! We'll email you within 24 hours with beta access.</p>
+                </div>
+
+                <form id="betaForm" class="space-y-6 relative z-10">
+                    <div class="space-y-2">
+                        <label for="name"
+                            class="block text-sm uppercase tracking-widest text-zinc-500 font-semibold">First
+                            Name</label>
+                        <input type="text" id="name" required placeholder="What should we call you?"
+                            class="w-full bg-transparent border border-zinc-800 text-white px-4 py-4 rounded-xl focus:outline-none focus:border-purple-500 transition-colors placeholder:text-zinc-600">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="email"
+                            class="block text-sm uppercase tracking-widest text-zinc-500 font-semibold">Email
+                            Address</label>
+                        <input type="email" id="email" required placeholder="your@email.com"
+                            class="w-full bg-transparent border border-zinc-800 text-white px-4 py-4 rounded-xl focus:outline-none focus:border-purple-500 transition-colors placeholder:text-zinc-600">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="feedback"
+                            class="block text-sm uppercase tracking-widest text-zinc-500 font-semibold">What's your
+                            biggest fitness frustration? <span
+                                class="text-zinc-600 lowercase tracking-normal">(Optional)</span></label>
+                        <textarea id="feedback" rows="3" placeholder="Be honest - helps us prioritize features"
+                            class="w-full bg-transparent border border-zinc-800 text-white px-4 py-4 rounded-xl focus:outline-none focus:border-purple-500 transition-colors placeholder:text-zinc-600"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg mt-4 disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed">
+                        Submit Application
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 7. FOOTER -->
+        <footer class="text-center space-y-4 pt-10 pb-10 mt-10 border-t border-zinc-800/50 text-zinc-500">
+            <p>Questions? Reply to the DM I sent.</p>
+            <p>Built by FORGED Studios</p>
+            <p class="text-xs">We'll never spam. Your data stays private.</p>
+        </footer>
+
+    </div>
+
+    <script>
+// ==========================================
+// SUPABASE CONFIGURATION
+// ==========================================
+const SUPABASE_CONFIG = {
+  url: 'https://ovuzlhyowzldlffllppq.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92dXpsaHlvd3psZGxmZmxscHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NjA0OTIsImV4cCI6MjA4NzUzNjQ5Mn0.9Qa_4-FhPy9qk0OymOJnmFuSVvtl8yk4Ob0qja7oBbc'
+};
+
+// ==========================================
+// FORM SUBMISSION HANDLER
+// ==========================================
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('betaForm');
+  const successMessage = document.getElementById('successMessage');
+  const errorMessage = document.getElementById('errorMessage');
+  
+  if (!form) {
+    console.error('Form not found');
+    return;
+  }
+  
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const emailInput = document.getElementById('email');
+    const nameInput = document.getElementById('name');
+    const feedbackInput = document.getElementById('feedback');
+    
+    const email = emailInput?.value?.trim();
+    const name = nameInput?.value?.trim();
+    const feedback = feedbackInput?.value?.trim() || '';
+    
+    // Validation
+    if (!email) {
+      alert('Please enter your email');
+      return;
+    }
+    
+    if (!name) {
+      alert('Please enter your name');
+      return;
+    }
+    
+    // Get submit button
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    
+    // Hide previous messages
+    if (successMessage) successMessage.classList.add('hidden');
+    if (errorMessage) errorMessage.classList.add('hidden');
+    
+    try {
+      console.log('Submitting to Supabase...');
+      
+      // Prepare payload
+      const payload = {
+        email: email,
+        type: 'beta',
+        referral_source: 'personal_invite'
+      };
+      
+      // Only add metadata if column exists (to prevent errors)
+      if (name || feedback) {
+        payload.metadata = {
+          name: name,
+          initial_feedback: feedback,
+          submitted_at: new Date().toISOString()
+        };
+      }
+      
+      // Submit to Supabase
+      const response = await fetch(
+        `${SUPABASE_CONFIG.url}/rest/v1/waitlist`,
+        {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_CONFIG.anonKey,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        }
+      );
+      
+      console.log('Response status:', response.status);
+      
+      // Check response
+      if (response.ok || response.status === 201) {
+        // SUCCESS
+        console.log('✅ Submission successful');
+        
+        // Show success message
+        if (successMessage) {
+          successMessage.classList.remove('hidden');
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          alert('✅ Application received! We\'ll email you within 24 hours.');
+        }
+        
+        // Clear form
+        form.reset();
+        
+      } else {
+        // ERROR from Supabase
+        const errorData = await response.json().catch(() => ({}));
+        console.error('❌ Supabase error:', errorData);
+        
+        // Show user-friendly error
+        if (errorMessage) {
+          errorMessage.textContent = 'Submission failed. Please try again or email me directly.';
+          errorMessage.classList.remove('hidden');
+        } else {
+          alert('Submission failed. Please try again or email me directly.');
+        }
+      }
+      
+    } catch (error) {
+      // NETWORK ERROR
+      console.error('❌ Network error:', error);
+      
+      if (errorMessage) {
+        errorMessage.textContent = 'Network error. Please check your connection and try again.';
+        errorMessage.classList.remove('hidden');
+      } else {
+        alert('Network error. Please check your connection and try again.');
+      }
+      
+    } finally {
+      // Reset button
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
+  });
+});
+</script>
+</body>
+
+</html>
