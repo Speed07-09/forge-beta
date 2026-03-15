@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import AdminGuard from '../components/AdminGuard'
-import AbstractBackground from '../components/AbstractBackground'
 import { supabase } from '../lib/supabase'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -154,7 +153,7 @@ function TechStackCard() {
         { label: 'Styling', value: 'Tailwind CSS', icon: '🎨' },
         { label: 'Auth', value: 'Supabase Auth', icon: '🔐' },
         { label: 'Database', value: 'PostgreSQL (Supabase)', icon: '🗄️' },
-        { label: 'AI', value: 'Google Gemini (multi-key)', icon: '✨' },
+        { label: 'AI', value: 'DeepSeek (API)', icon: '✨' },
         { label: 'Hosting', value: 'Vercel', icon: '🚀' },
         { label: 'Language', value: 'TypeScript', icon: '📘' },
     ]
@@ -224,7 +223,7 @@ function SystemStatusCard({ m }: { m: Metrics }) {
             status: m.supabaseConnected ? '🟢 Connected' : '🔴 Error',
             color: m.supabaseConnected ? 'text-emerald-400' : 'text-red-400',
         },
-        { label: 'Gemini API', status: '🟢 Available', color: 'text-emerald-400' },
+        { label: 'DeepSeek API', status: '🟢 Available', color: 'text-emerald-400' },
         {
             label: 'Environment',
             status: env.charAt(0).toUpperCase() + env.slice(1),
@@ -420,8 +419,8 @@ function AdminContent() {
 
     return (
         <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
-            {/* Background */}
-            <AbstractBackground variant="geometric" className="absolute inset-0 overflow-hidden pointer-events-none opacity-5" />
+            {/* Background glow */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5" />
 
             {/* Gradient glow - top */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />

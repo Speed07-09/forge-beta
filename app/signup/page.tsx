@@ -214,7 +214,7 @@ export default function SignUpPage() {
     // Full-screen loading while checking session
     if (isCheckingSession) {
         return (
-            <div className="relative min-h-screen bg-black flex items-center justify-center">
+            <div className="relative min-h-screen bg-background flex items-center justify-center">
                 <AbstractBackground variant="wave" />
                 <LoadingDots />
             </div>
@@ -222,21 +222,21 @@ export default function SignUpPage() {
     }
 
     return (
-        <div className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden px-6 py-12">
+        <div className="relative min-h-screen bg-background flex items-center justify-center overflow-hidden px-6 py-12 font-body">
             {/* Animated background */}
             <AbstractBackground variant="wave" />
 
             {/* Card */}
             <div
-                className="relative z-10 w-full max-w-md"
+                className="relative z-10 w-full max-w-md ghost-border bg-surface-low/80 backdrop-blur-xl rounded-[24px] p-8 sm:p-10 shadow-2xl"
                 style={{ animation: 'fadeIn 0.8s ease-out forwards' }}
             >
                 {/* Heading */}
-                <div className="mb-10">
-                    <h1 className="text-4xl font-light tracking-[0.2em] text-white mb-3 select-none">
+                <div className="mb-10 text-center">
+                    <h1 className="text-4xl font-bold tracking-[0.2em] font-headline text-on-surface mb-3 select-none drop-shadow-[0_0_12px_rgba(192,193,255,0.2)]">
                         FORGE
                     </h1>
-                    <p className="text-zinc-400 text-lg font-light">
+                    <p className="text-on-surface-variant text-[15px] font-medium">
                         Start your journey.
                     </p>
                 </div>
@@ -244,7 +244,7 @@ export default function SignUpPage() {
                 {/* Error message */}
                 {error && (
                     <div
-                        className="mb-6 px-4 py-3 rounded-xl border border-red-900/50 bg-red-950/30 text-red-400 text-sm"
+                        className="mb-8 px-5 py-4 rounded-2xl ghost-border border-red-500/30 bg-red-500/10 text-red-400 text-[15px] font-medium"
                         role="alert"
                         aria-live="polite"
                     >
@@ -253,11 +253,11 @@ export default function SignUpPage() {
                 )}
 
                 {/* Sign-up form */}
-                <form onSubmit={handleEmailSignUp} className="flex flex-col gap-4" noValidate>
-                    <div className="flex flex-col gap-1.5">
+                <form onSubmit={handleEmailSignUp} className="flex flex-col gap-5" noValidate>
+                    <div className="flex flex-col gap-2">
                         <label
                             htmlFor="username"
-                            className="text-sm text-zinc-400 font-medium tracking-wide"
+                            className="text-[11px] font-bold uppercase tracking-[0.15em] text-on-surface-variant pl-1"
                         >
                             Username
                         </label>
@@ -270,14 +270,14 @@ export default function SignUpPage() {
                             autoComplete="username"
                             disabled={isLoading || isGoogleLoading}
                             aria-label="Username"
-                            className="w-full bg-transparent border border-zinc-800 text-white rounded-xl px-4 py-3 text-base placeholder:text-zinc-600 focus:border-white focus:outline-none transition-colors duration-200 disabled:opacity-50"
+                            className="w-full bg-surface-lowest ghost-border text-on-surface rounded-xl px-5 py-4 text-[15px] placeholder:text-outline-variant focus:border-primary focus:bg-surface-high focus:outline-none hover:border-outline transition-all duration-300 shadow-inner disabled:opacity-50"
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1.5">
+                    <div className="flex flex-col gap-2">
                         <label
                             htmlFor="email"
-                            className="text-sm text-zinc-400 font-medium tracking-wide"
+                            className="text-[11px] font-bold uppercase tracking-[0.15em] text-on-surface-variant pl-1"
                         >
                             Email
                         </label>
@@ -290,14 +290,14 @@ export default function SignUpPage() {
                             autoComplete="email"
                             disabled={isLoading || isGoogleLoading}
                             aria-label="Email address"
-                            className="w-full bg-transparent border border-zinc-800 text-white rounded-xl px-4 py-3 text-base placeholder:text-zinc-600 focus:border-white focus:outline-none transition-colors duration-200 disabled:opacity-50"
+                            className="w-full bg-surface-lowest ghost-border text-on-surface rounded-xl px-5 py-4 text-[15px] placeholder:text-outline-variant focus:border-primary focus:bg-surface-high focus:outline-none hover:border-outline transition-all duration-300 shadow-inner disabled:opacity-50"
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1.5">
+                    <div className="flex flex-col gap-2">
                         <label
                             htmlFor="password"
-                            className="text-sm text-zinc-400 font-medium tracking-wide"
+                            className="text-[11px] font-bold uppercase tracking-[0.15em] text-on-surface-variant pl-1"
                         >
                             Password
                         </label>
@@ -310,27 +310,27 @@ export default function SignUpPage() {
                             autoComplete="new-password"
                             disabled={isLoading || isGoogleLoading}
                             aria-label="Password"
-                            className="w-full bg-transparent border border-zinc-800 text-white rounded-xl px-4 py-3 text-base placeholder:text-zinc-600 focus:border-white focus:outline-none transition-colors duration-200 disabled:opacity-50"
+                            className="w-full bg-surface-lowest ghost-border text-on-surface rounded-xl px-5 py-4 text-[15px] placeholder:text-outline-variant focus:border-primary focus:bg-surface-high focus:outline-none hover:border-outline transition-all duration-300 shadow-inner disabled:opacity-50"
                         />
                         {/* Password strength meter */}
                         {password.length > 0 && (
-                            <div className="mt-1.5">
-                                <div className="flex gap-1 mb-1.5">
+                            <div className="mt-2 ml-1">
+                                <div className="flex gap-1.5 mb-2">
                                     {[0, 1, 2, 3].map((i) => (
                                         <div
                                             key={i}
-                                            className="flex-1 h-0.5 rounded-full transition-all duration-300"
+                                            className="flex-1 h-1 rounded-full transition-all duration-300"
                                             style={{
                                                 backgroundColor:
                                                     i < passwordStrength.score
                                                         ? passwordStrength.color
-                                                        : '#27272a',
+                                                        : 'var(--color-surface-high)',
                                             }}
                                         />
                                     ))}
                                 </div>
                                 <span
-                                    className="text-xs font-medium"
+                                    className="text-[11px] font-bold uppercase tracking-[0.1em]"
                                     style={{ color: passwordStrength.color }}
                                 >
                                     {passwordStrength.label}
@@ -343,17 +343,17 @@ export default function SignUpPage() {
                         type="submit"
                         disabled={isLoading || isGoogleLoading}
                         aria-label="Create account"
-                        className="w-full mt-2 bg-white text-black rounded-full py-3 px-8 text-base font-medium hover:bg-zinc-200 active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-h-[48px]"
+                        className="w-full mt-4 lit-gradient text-background rounded-full py-4 px-8 text-[15px] font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-h-[56px] shadow-[0_0_20px_rgba(192,193,255,0.2)]"
                     >
                         {isLoading ? <LoadingDots /> : 'Create Account'}
                     </button>
                 </form>
 
                 {/* Divider */}
-                <div className="flex items-center gap-4 my-6">
-                    <div className="flex-1 h-px bg-zinc-800" />
-                    <span className="text-zinc-600 text-xs font-medium tracking-widest">OR</span>
-                    <div className="flex-1 h-px bg-zinc-800" />
+                <div className="flex items-center gap-4 my-8">
+                    <div className="flex-1 h-px bg-outline-variant" />
+                    <span className="text-outline-variant text-[11px] font-bold tracking-[0.2em] uppercase">OR</span>
+                    <div className="flex-1 h-px bg-outline-variant" />
                 </div>
 
                 {/* Google button */}
@@ -361,7 +361,7 @@ export default function SignUpPage() {
                     onClick={handleGoogleSignUp}
                     disabled={isLoading || isGoogleLoading}
                     aria-label="Continue with Google"
-                    className="w-full border border-zinc-700 text-white rounded-full py-3 px-8 text-base font-medium flex items-center justify-center gap-3 hover:border-white hover:bg-white/5 active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed min-h-[48px]"
+                    className="w-full ghost-border bg-surface text-on-surface rounded-full py-4 px-8 text-[15px] font-bold flex items-center justify-center gap-3 hover:border-outline hover:bg-surface-high active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px] shadow-sm"
                 >
                     {isGoogleLoading ? (
                         <LoadingDots />
@@ -374,11 +374,11 @@ export default function SignUpPage() {
                 </button>
 
                 {/* Footer link */}
-                <p className="text-center mt-8 text-sm text-zinc-500">
+                <p className="text-center mt-10 text-[15px] text-on-surface-variant font-medium">
                     Already have an account?{' '}
                     <Link
                         href="/signin"
-                        className="text-white underline underline-offset-4 decoration-zinc-700 hover:decoration-white transition-colors duration-200"
+                        className="text-primary italic hover:brightness-110 transition-all duration-300"
                     >
                         Sign In
                     </Link>

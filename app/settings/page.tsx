@@ -39,8 +39,8 @@ function Toast({
         type === 'success' ? CheckCircle2 : type === 'error' ? XCircle : AlertTriangle
 
     return (
-        <div className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 rounded-full border bg-black text-sm font-normal ${colors}`} style={{ animation: 'fadeInUp 225ms ease-out both' }}>
-            <Icon className="w-4 h-4 shrink-0" />
+        <div className={`fixed bottom-[110px] left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 rounded-[16px] border bg-surface-high text-on-surface text-[14px] font-bold shadow-xl ${colors}`} style={{ animation: 'fadeInUp 225ms ease-out both' }}>
+            <Icon className="w-5 h-5 shrink-0" />
             {message}
         </div>
     )
@@ -76,8 +76,8 @@ function Section({
     children: React.ReactNode
 }) {
     return (
-        <div className="border border-zinc-800 rounded-2xl p-6 md:p-8 bg-zinc-900/20">
-            <h2 className="text-xs font-normal text-zinc-500 mb-6 uppercase tracking-widest">{title}</h2>
+        <div className="ghost-border rounded-[24px] p-6 md:p-8 bg-surface-low relative overflow-hidden">
+            <h2 className="text-[11px] font-bold text-primary mb-6 uppercase tracking-[0.15em]">{title}</h2>
             {children}
         </div>
     )
@@ -86,7 +86,7 @@ function Section({
 // ─── Divider ─────────────────────────────────────────────────────────────────
 
 function Divider() {
-    return <div className="border-t border-zinc-800/50 my-6" />
+    return <div className="border-t border-outline-variant my-6" />
 }
 
 // ─── Main settings content ─────────────────────────────────────────────────────
@@ -229,13 +229,13 @@ function SettingsContent() {
     const initials = getInitials(username || null, email)
 
     return (
-        <div className="min-h-screen bg-black text-white pb-32">
-            <div className="max-w-2xl mx-auto px-6 py-8 md:px-8 md:py-12">
+        <div className="min-h-screen bg-background text-on-surface font-body pb-[120px]">
+            <div className="max-w-2xl mx-auto px-6 py-12 md:px-8 md:py-16">
 
                 {/* Header */}
                 <div className="mb-12 md:mb-16" style={{ animation: 'fadeInUp 225ms ease-out both' }}>
-                    <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">Settings</h1>
-                    <p className="text-zinc-500 font-light text-base">Manage your account and preferences</p>
+                    <h1 className="text-3xl md:text-4xl font-bold text-on-surface tracking-tight mb-2 font-headline">Settings</h1>
+                    <p className="text-on-surface-variant font-medium text-base">Manage your account and preferences</p>
                 </div>
 
                 <div className="space-y-8 md:space-y-12" style={{ animation: 'fadeInUp 225ms ease-out 100ms both' }}>
@@ -246,7 +246,7 @@ function SettingsContent() {
                         <div className="flex items-center gap-5 mb-8">
                             {/* Avatar */}
                             <div
-                                className="w-16 h-16 border border-zinc-800 rounded-2xl bg-zinc-900/20 flex flex-col items-center justify-center shrink-0 text-white text-xl font-bold select-none"
+                                className="w-[72px] h-[72px] ghost-border rounded-[20px] bg-surface-high flex flex-col items-center justify-center shrink-0 text-on-surface text-2xl font-bold select-none font-headline"
                                 aria-label="Avatar"
                             >
                                 {initials}
@@ -254,14 +254,14 @@ function SettingsContent() {
 
                             {/* Name / email */}
                             <div className="flex-1 min-w-0">
-                                <p className="font-bold text-white text-lg truncate mb-1 tracking-tight">{username || 'No username set'}</p>
-                                <p className="text-zinc-500 text-sm truncate font-light">{email}</p>
+                                <p className="font-bold text-on-surface text-xl truncate mb-1 tracking-tight font-headline">{username || 'No username set'}</p>
+                                <p className="text-on-surface-variant text-[15px] truncate font-medium">{email}</p>
                             </div>
                         </div>
 
                         {/* Username edit */}
                         <div>
-                            <label className="block text-xs font-normal text-zinc-500 uppercase tracking-widest mb-3">
+                            <label className="block text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] mb-3">
                                 Username
                             </label>
                             {editingUsername ? (
@@ -292,11 +292,11 @@ function SettingsContent() {
                                     </div>
                                 </div>
                             ) : (
-                                <div className="flex items-center justify-between p-4 border border-zinc-800 bg-zinc-900/20 rounded-2xl">
-                                    <span className="text-zinc-400 font-light text-base">{username || <span className="text-zinc-700 italic">Not set</span>}</span>
+                                <div className="flex items-center justify-between p-4 px-5 ghost-border bg-surface-low rounded-xl">
+                                    <span className="text-on-surface-variant font-medium text-[15px]">{username || <span className="text-on-surface-variant/50 italic">Not set</span>}</span>
                                     <button
                                         onClick={startEditing}
-                                        className="py-3 px-6 rounded-full border border-zinc-700 text-zinc-500 hover:text-white hover:border-zinc-500 transition-all text-xs font-normal tracking-widest uppercase"
+                                        className="py-3 px-6 rounded-full ghost-border text-on-surface-variant hover:text-primary hover:border-primary/50 hover:bg-surface-high transition-all text-[11px] font-bold tracking-[0.15em] uppercase active:scale-95"
                                     >
                                         Edit
                                     </button>
@@ -308,10 +308,10 @@ function SettingsContent() {
 
                         {/* Email (read-only) */}
                         <div>
-                            <label className="block text-xs font-normal text-zinc-500 uppercase tracking-widest mb-2">
+                            <label className="block text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.15em] mb-3">
                                 Email
                             </label>
-                            <p className="text-zinc-400 font-light p-4 border border-zinc-800 bg-zinc-900/20 rounded-2xl">{email ?? '—'}</p>
+                            <p className="text-on-surface-variant font-medium p-4 px-5 ghost-border bg-surface-low rounded-xl text-[15px]">{email ?? '—'}</p>
                         </div>
                     </Section>
 
@@ -320,10 +320,10 @@ function SettingsContent() {
                         <Section title="Admin">
                             <Link
                                 href="/admin"
-                                className="flex items-center justify-between py-4 px-5 border border-zinc-800 bg-zinc-900/20 hover:bg-zinc-900/30 hover:border-zinc-700 transition-all rounded-2xl group active:opacity-80"
+                                className="flex items-center justify-between py-4 px-6 ghost-border bg-surface-low hover:bg-surface-high hover:border-outline transition-all rounded-xl group active:scale-[0.98]"
                             >
-                                <span className="font-normal text-white text-sm">Admin Dashboard</span>
-                                <span className="text-zinc-600 group-hover:text-zinc-400 transition-colors">→</span>
+                                <span className="font-bold text-on-surface text-[15px]">Admin Dashboard</span>
+                                <span className="text-primary group-hover:translate-x-1 transition-all">→</span>
                             </Link>
                         </Section>
                     )}
@@ -335,66 +335,66 @@ function SettingsContent() {
                             {/* Logout */}
                             <button
                                 onClick={() => setModal('logout')}
-                                className="w-full py-4 px-5 rounded-full border border-zinc-800 text-white hover:bg-zinc-900/30 hover:border-zinc-700 transition-all duration-300 text-sm font-normal text-left flex items-center justify-between active:opacity-80"
+                                className="w-full py-4 px-6 rounded-full ghost-border text-on-surface hover:bg-surface-high hover:border-outline transition-all duration-300 text-[15px] font-bold text-left flex items-center justify-between active:scale-95 group"
                             >
                                 Sign Out
-                                <span className="text-zinc-700">→</span>
+                                <span className="text-on-surface-variant group-hover:translate-x-1 transition-all">→</span>
                             </button>
 
                             {/* Reset progress */}
                             <button
                                 onClick={() => setModal('resetProgress')}
                                 disabled={resettingProgress}
-                                className="w-full py-4 px-5 rounded-full border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-900/30 hover:border-zinc-700 disabled:opacity-50 transition-all duration-300 text-sm font-normal text-left flex items-center justify-between active:opacity-80"
+                                className="w-full py-4 px-6 rounded-full ghost-border text-on-surface-variant hover:text-on-surface hover:bg-surface-high hover:border-outline disabled:opacity-50 transition-all duration-300 text-[15px] font-bold text-left flex items-center justify-between active:scale-95 group"
                             >
                                 {resettingProgress ? 'Resetting…' : 'Reset Progress'}
-                                <span className="text-zinc-700">→</span>
+                                <span className="text-on-surface-variant group-hover:translate-x-1 transition-all">→</span>
                             </button>
 
                             {/* Delete account */}
                             <button
                                 onClick={() => setModal('deleteAccount')}
                                 disabled={deletingAccount}
-                                className="w-full py-4 px-5 rounded-full border border-zinc-800 text-red-500 hover:border-red-500/30 disabled:opacity-50 transition-all duration-300 text-sm font-normal text-left flex items-center justify-between active:opacity-80"
+                                className="w-full py-4 px-6 rounded-[20px] ghost-border text-red-400 hover:border-red-500/30 hover:bg-red-500/10 disabled:opacity-50 transition-all duration-300 text-[15px] font-bold text-left flex items-center justify-between active:scale-[0.98] group mt-8 shadow-[0_0_15px_rgba(239,68,68,0.05)]"
                             >
                                 {deletingAccount ? 'Deleting…' : 'Delete Account'}
-                                <span className="text-red-500/30">→</span>
+                                <span className="text-red-500/50 group-hover:translate-x-1 transition-all">→</span>
                             </button>
                         </div>
                     </Section>
 
                     {/* ── ABOUT SECTION ────────────────────────────────────────────── */}
                     <Section title="About">
-                        <ul className="space-y-0 divide-y divide-zinc-800/50">
+                        <ul className="space-y-0 divide-y divide-outline-variant">
                             <li className="flex items-center justify-between py-4">
-                                <span className="text-zinc-500 font-normal text-sm">App Version</span>
-                                <span className="text-zinc-400 text-sm font-mono">Forge v1.0.0</span>
+                                <span className="text-on-surface-variant font-bold text-[15px]">App Version</span>
+                                <span className="text-on-surface text-[15px] font-mono">Forge v2.0.0</span>
                             </li>
                             <li>
                                 <a
                                     href="mailto:feedback@forge.app"
-                                    className="flex items-center justify-between py-4 text-zinc-500 hover:text-white transition-colors text-sm font-normal active:opacity-80"
+                                    className="flex items-center justify-between py-4 text-on-surface-variant hover:text-on-surface transition-colors text-[15px] font-bold active:opacity-80 group"
                                 >
                                     Send Feedback
-                                    <span className="text-zinc-700">→</span>
+                                    <span className="text-on-surface-variant group-hover:translate-x-1 transition-all">→</span>
                                 </a>
                             </li>
                             <li>
                                 <Link
                                     href="/privacy"
-                                    className="flex items-center justify-between py-4 text-zinc-500 hover:text-white transition-colors text-sm font-normal active:opacity-80"
+                                    className="flex items-center justify-between py-4 text-on-surface-variant hover:text-on-surface transition-colors text-[15px] font-bold active:opacity-80 group"
                                 >
                                     Privacy Policy
-                                    <span className="text-zinc-700">→</span>
+                                    <span className="text-on-surface-variant group-hover:translate-x-1 transition-all">→</span>
                                 </Link>
                             </li>
                             <li>
                                 <Link
                                     href="/terms"
-                                    className="flex items-center justify-between py-4 text-zinc-500 hover:text-white transition-colors text-sm font-normal active:opacity-80"
+                                    className="flex items-center justify-between py-4 text-on-surface-variant hover:text-on-surface transition-colors text-[15px] font-bold active:opacity-80 group"
                                 >
                                     Terms of Service
-                                    <span className="text-zinc-700">→</span>
+                                    <span className="text-on-surface-variant group-hover:translate-x-1 transition-all">→</span>
                                 </Link>
                             </li>
                         </ul>

@@ -14,6 +14,7 @@ const EXCLUDED_ROUTES = [
   '/privacy',
   '/terms',
   '/admin',
+  '/plans',
 ]
 
 export function ConditionalBottomNav() {

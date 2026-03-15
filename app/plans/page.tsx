@@ -14,10 +14,10 @@ import { generateSelfImprovementPlan, extractHabitsFromPlan } from '../services/
 function GeneratingLoader({ phase }: { phase: 'generating' | 'extracting' }) {
     return (
         <div className="flex flex-col items-center justify-center py-40 text-center">
-            <h3 className="text-base font-light mb-4 text-white tracking-widest uppercase" style={{ animation: 'subtlePulse 2s ease-in-out infinite' }}>
+            <h3 className="text-lg font-bold mb-4 text-primary tracking-[0.2em] uppercase font-headline animate-atmospheric-pulse">
                 {phase === 'generating' ? 'Generating' : 'Analyzing'}
             </h3>
-            <p className="text-zinc-500 max-w-sm text-sm font-light">
+            <p className="text-on-surface-variant max-w-sm text-sm font-medium">
                 {phase === 'generating'
                     ? 'Curating a path for consistency and growth.'
                     : 'Analyzing plan and creating habits…'}
@@ -30,13 +30,13 @@ function GeneratingLoader({ phase }: { phase: 'generating' | 'extracting' }) {
 
 function ErrorState({ message, onRetry }: { message: string; onRetry: () => void }) {
     return (
-        <div className="max-w-xl mx-auto border border-zinc-800 p-12 text-center bg-zinc-900/20">
-            <p className="text-zinc-500 text-4xl mb-6">×</p>
-            <h3 className="text-xl font-bold text-white mb-4">Connection interrupted</h3>
-            <p className="text-zinc-500 mb-8 font-light text-sm">{message}</p>
+        <div className="max-w-xl mx-auto ghost-border rounded-2xl p-12 text-center bg-surface-low">
+            <p className="text-secondary text-4xl mb-6 material-symbols-outlined shrink-0" style={{ fontSize: '48px' }}>error</p>
+            <h3 className="text-xl font-bold text-on-surface mb-4 font-headline">Connection interrupted</h3>
+            <p className="text-on-surface-variant mb-8 font-medium text-sm">{message}</p>
             <button
                 onClick={onRetry}
-                className="py-4 px-8 border-2 border-white bg-transparent text-white hover:bg-white hover:text-black transition-all duration-300 text-sm font-normal active:opacity-80"
+                className="py-3 px-8 lit-gradient text-background rounded-full transition-all duration-300 text-sm font-bold active:scale-95 hover:scale-[1.02]"
             >
                 Retry
             </button>
@@ -145,65 +145,73 @@ export default function PlansPage() {
 
     return (
         <AuthGuard>
-            <main className="min-h-screen bg-black px-6 py-8 pb-24">
-                <div className="max-w-2xl mx-auto">
-                    
+            {/* Full-screen questionnaire — no wrapper needed (fixed inset-0) */}
+            {step === 'questionnaire' && (
+                <Questionnaire onSubmit={handleSubmit} />
+            )}
+
+            {/* All other states use the padded layout */}
+            {step !== 'questionnaire' && (
+                <div className="min-h-screen bg-background font-body pb-[120px]">
                     {/* Header */}
-                    <div className="mb-12">
-                        <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-2">
-                            Generate Plan
-                        </h1>
-                        <p className="text-sm text-zinc-500 uppercase tracking-widest">
-                            Personalized transformation
-                        </p>
-                    </div>
+                    <header className="fixed top-0 w-full bg-background/80 glass-panel border-b border-outline-variant z-50">
+                        <div className="max-w-2xl mx-auto px-6 h-16 flex items-center justify-between">
+                            <div className="flex items-center gap-4 cursor-pointer" onClick={() => router.push('/home')}>
+                                <span className="text-on-surface-variant hover:text-primary text-[11px] font-bold uppercase tracking-[0.15em] transition-colors">
+                                    ← Home
+                                </span>
+                                <span className="text-outline-variant">/</span>
+                                <h1 className="text-[11px] font-bold tracking-[0.2em] uppercase text-on-surface">
+                                    Generate Plan
+                                </h1>
+                            </div>
 
-                    {/* Content */}
-                    {step === 'questionnaire' && (
-                        <Questionnaire onSubmit={handleSubmit} />
-                    )}
+                            <a
+                                href="/vault"
+                                className="py-3 px-6 text-[11px] font-bold tracking-[0.15em] uppercase ghost-border text-on-surface-variant hover:text-on-surface hover:bg-surface-high rounded-full transition-all duration-300 active:scale-95 flex items-center gap-2"
+                            >
+                                <span className="material-symbols-outlined text-[14px]">inventory_2</span>
+                                Vault
+                            </a>
+                        </div>
+                    </header>
 
-                    {step === 'generating' && (
-                        <GeneratingLoader phase="generating" />
-                    )}
+                    <main className="max-w-2xl mx-auto px-6 pt-28 md:pt-32">
+                        {/* Header Content */}
+                        <div className="mb-12" style={{ animation: 'fadeInUp 225ms ease-out both' }}>
+                            <h2 className="text-3xl md:text-5xl font-bold text-on-surface mb-4 tracking-tight font-headline">
+                                Generate Plan
+                            </h2>
+                            <p className="text-on-surface-variant text-[15px] font-medium">
+                                Personalized transformation blueprint.
+                            </p>
+                        </div>
 
-                    {step === 'extracting' && (
-                        <GeneratingLoader phase="extracting" />
-                    )}
+                        {step === 'generating' && (
+                            <GeneratingLoader phase="generating" />
+                        )}
 
-                    {step === 'display' && generatedPlan && (
-                        <PlanDisplay 
-                            plan={generatedPlan} 
-                            onSave={handleSave}
-                        />
-                    )}
+                        {step === 'extracting' && (
+                            <GeneratingLoader phase="extracting" />
+                        )}
 
-                    {step === 'error' && (
-                        <ErrorState 
-                            message={error} 
-                            onRetry={handleRetry}
-                        />
-                    )}
+                        {step === 'display' && generatedPlan && (
+                            <PlanDisplay
+                                plan={generatedPlan}
+                                onSave={handleSave}
+                            />
+                        )}
 
+                        {step === 'error' && (
+                            <ErrorState
+                                message={error}
+                                onRetry={handleRetry}
+                            />
+                        )}
+
+                    </main>
                 </div>
-            </main>
-
-            <style jsx>{`
-                @keyframes subtlePulse {
-                    0%, 100% { opacity: 1; }
-                    50% { opacity: 0.6; }
-                }
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(8px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            `}</style>
+            )}
         </AuthGuard>
     );
 }

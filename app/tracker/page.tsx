@@ -35,9 +35,9 @@ function Toast({
 }) {
     return (
         <div
-            className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-full text-sm font-normal border animate-[fadeInUp_225ms_ease-out] ${type === "error"
-                ? "bg-black border-red-500/30 text-red-400"
-                : "bg-black border-zinc-800 text-white"
+            className={`fixed bottom-[110px] left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-full text-sm font-bold border animate-[fadeInUp_225ms_ease-out] ${type === "error"
+                ? "bg-surface-high border-red-500/30 text-red-400"
+                : "bg-surface-high ghost-border text-on-surface"
                 }`}
         >
             {message}
@@ -227,18 +227,18 @@ function TrackerContent() {
     );
 
     return (
-        <div className="min-h-screen bg-black text-white pb-32">
-            <div className="max-w-2xl mx-auto px-6 py-8 md:px-8 md:py-12 space-y-12 md:space-y-16">
+        <div className="min-h-screen bg-background text-on-surface pb-[120px] font-body">
+            <div className="max-w-2xl mx-auto px-6 py-12 md:px-8 md:py-16 space-y-12 md:space-y-16">
                 {/* Header */}
                 <header
                     className="space-y-3"
                     style={{ animation: 'fadeInUp 225ms ease-out both' }}
                 >
-                    <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    <h1 className="text-3xl md:text-4xl font-bold text-on-surface tracking-tight font-headline">
                         Today&apos;s Habits
                     </h1>
-                    <p className="text-zinc-500 text-base font-light leading-relaxed">
-                        <span className="text-white">{todayLabel}</span> · Stay consistent.
+                    <p className="text-on-surface-variant text-base font-medium leading-relaxed">
+                        <span className="text-on-surface">{todayLabel}</span> · Stay consistent.
                     </p>
                 </header>
 
@@ -264,12 +264,12 @@ function TrackerContent() {
                     />
 
                     {!isLoading && (
-                        <div className="mt-8 flex justify-center">
+                        <div className="mt-10 flex justify-center">
                             <button
                                 onClick={() => setShowAddModal(true)}
-                                className="border border-zinc-800 text-zinc-500 hover:text-white hover:border-zinc-600 rounded-full py-4 px-8 text-sm font-normal transition-all duration-300 flex items-center gap-2 active:opacity-80"
+                                className="ghost-border text-on-surface-variant hover:text-primary hover:border-primary/50 hover:bg-surface-high rounded-full py-4 px-8 text-[15px] font-bold transition-all duration-300 flex items-center gap-2 active:scale-95"
                             >
-                                <Plus className="w-4 h-4" /> Add Custom Habit
+                                <Plus className="w-5 h-5" /> Add Custom Habit
                             </button>
                         </div>
                     )}

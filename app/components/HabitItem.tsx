@@ -45,24 +45,24 @@ export default function HabitItem({ habit, isCompleted, onToggle }: HabitItemPro
             <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-3 flex-wrap">
                     <h3
-                        className={`text-base font-normal transition-colors duration-300 ${isCompleted
-                            ? "text-zinc-600 line-through"
-                            : "text-white"
+                        className={`text-[17px] font-bold transition-colors duration-300 font-headline ${isCompleted
+                            ? "text-on-surface-variant line-through"
+                            : "text-on-surface"
                             }`}
                     >
                         {habit.habit_name}
                     </h3>
                     {habit.is_custom && (
-                        <span className="text-[10px] font-normal uppercase tracking-widest text-zinc-600">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.15em] bg-primary/10 text-primary px-2 py-0.5 rounded-sm">
                             Custom
                         </span>
                     )}
                 </div>
                 {habit.habit_description && (
                     <p
-                        className={`text-sm mt-1.5 font-light transition-colors duration-300 ${isCompleted
-                            ? "text-zinc-700"
-                            : "text-zinc-500"
+                        className={`text-sm mt-1.5 font-medium transition-colors duration-300 ${isCompleted
+                            ? "text-on-surface-variant opacity-50"
+                            : "text-on-surface-variant"
                             }`}
                     >
                         {habit.habit_description}

@@ -39,7 +39,7 @@ export function BottomNav() {
   // Prevent hydration mismatch
   if (!mounted) {
     return (
-      <nav className="fixed bottom-0 left-0 right-0 z-50 h-[88px] bg-[#0A0F1C]/90 backdrop-blur-xl border-t border-white/5">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 h-[88px] glass-panel border-t border-outline-variant">
         <div className="flex items-center justify-around h-full max-w-lg mx-auto px-6 pb-4">
           {/* Render placeholder to maintain layout */}
         </div>
@@ -49,7 +49,7 @@ export function BottomNav() {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 h-[88px] bg-[#0A0F1C]/90 backdrop-blur-xl border-t border-white/5"
+      className="fixed bottom-0 left-0 right-0 z-50 h-[88px] glass-panel border-t border-outline-variant"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -64,19 +64,19 @@ export function BottomNav() {
               key={item.href}
               href={item.href}
               className={`flex flex-col items-center justify-center min-w-[64px] gap-1.5 transition-all duration-300 ${
-                isActive ? "text-action" : "text-text-secondary hover:text-white"
+                isActive ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
               }`}
               aria-label={item.label}
               aria-current={isActive ? "page" : undefined}
             >
               <div className="relative flex items-center justify-center h-8 w-8 transition-transform duration-300">
                 <Icon 
-                  className={`w-6 h-6 transition-all duration-300 ${isActive ? 'scale-110' : 'scale-100'} ${isActive ? 'text-action' : 'text-text-secondary'}`} 
+                  className={`w-6 h-6 transition-all duration-300 ${isActive ? 'scale-110 drop-shadow-[0_0_12px_rgba(192,193,255,0.4)] text-primary' : 'scale-100 text-on-surface-variant'}`} 
                   strokeWidth={2}
                   fill={isActive ? "currentColor" : "none"}
                 />
               </div>
-              <span className={`text-[10px] font-medium tracking-wide transition-colors duration-300 ${isActive ? 'text-action' : 'text-text-secondary'}`}>
+              <span className={`text-[10px] font-medium tracking-wide transition-colors duration-300 ${isActive ? 'text-primary' : 'text-on-surface-variant'}`} style={{ fontFamily: 'Manrope, sans-serif' }}>
                 {item.label}
               </span>
             </Link>
