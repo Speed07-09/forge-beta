@@ -83,7 +83,7 @@ export default function LandingPage() {
               style={{ animation: "fadeInUp 1s ease-out 0.6s both" }}
             >
               <button
-                onClick={() => router.push("/signin")}
+                onClick={() => router.push("/onboarding")}
                 className="w-full sm:w-auto px-8 h-14 lit-gradient text-background rounded-full text-[15px] font-bold tracking-wide hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(192,193,255,0.3)]"
               >
                 Get Started Free
@@ -291,7 +291,7 @@ export default function LandingPage() {
 
           <div className="fade-up-element opacity-0 translate-y-8 transition-all duration-1000 ease-out delay-300 relative z-10">
             <button
-              onClick={() => router.push("/signin")}
+              onClick={() => router.push("/onboarding")}
               className="px-10 h-16 lit-gradient text-background rounded-full text-lg font-bold tracking-wide hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(192,193,255,0.3)]"
             >
               Get Started — It's Free

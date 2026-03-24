@@ -3,27 +3,38 @@
 import React, { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import AbstractBackground from "@/app/components/AbstractBackground";
+import { useRouter } from "next/navigation";
 
 /* ─── Screen data ─── */
 const screens = [
     {
-        title: "Build Lasting Habits",
-        description: "Small daily actions compound into extraordinary results. Forge helps you stay on track.",
-        variant: "circle" as const,
-    },
-    {
-        title: "Track Your Progress",
-        description: "Visualize your streak, completion rate, and growth over 30 transformative days.",
+        title: "FORGE",
+        isLogo: true,
+        description: "Welcome. Your transformation journey starts here.",
         variant: "wave" as const,
     },
     {
-        title: "Transform in 30 Days",
-        description: "A focused 30-day program designed to rewire your routines and unlock your potential.",
+        title: "Plan Generation",
+        isLogo: false,
+        description: "We analyze your profile to curate a specialized 30-day blueprint. Small daily actions compound into extraordinary results.",
         variant: "geometric" as const,
+    },
+    {
+        title: "Tracker & Vault",
+        isLogo: false,
+        description: "Visualize your streaks in the interactive Tracker and save all your historic 30-day blueprints securely in the Vault.",
+        variant: "circle" as const,
+    },
+    {
+        title: "Ready to FORGE your 30 day path?",
+        isLogo: false,
+        description: "Click sign-up below",
+        variant: "wave" as const,
     },
 ];
 
 export default function OnboardingPage() {
+    const router = useRouter();
     const [current, setCurrent] = useState(0);
     const [direction, setDirection] = useState<"left" | "right" | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -78,16 +89,23 @@ export default function OnboardingPage() {
 
     return (
         <div
-            className="relative min-h-screen bg-black flex flex-col items-center justify-between overflow-hidden select-none"
+            className="relative min-h-screen bg-background flex flex-col items-center justify-between overflow-hidden select-none font-body"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
         >
+            {/* Background elements running constantly */}
+            {!screen.isLogo && (
+               <div className="absolute inset-0 z-0 opacity-40 pointer-events-none transition-opacity duration-1000">
+                   <AbstractBackground variant={screen.variant} />
+               </div>
+            )}
+
             {/* Skip */}
             {!isLast && (
                 <div className="absolute top-6 right-6 z-20">
                     <Link
-                        href="/signin"
-                        className="text-sm text-zinc-500 hover:text-white transition-colors duration-300"
+                        href="/signup"
+                        className="text-sm font-bold tracking-wide uppercase text-on-surface-variant hover:text-on-surface transition-colors duration-300"
                     >
                         Skip
                     </Link>
@@ -95,25 +113,37 @@ export default function OnboardingPage() {
             )}
 
             {/* ─── Main content ─── */}
-            <div className="flex-1 flex flex-col items-center justify-center w-full max-w-md mx-auto px-8">
-                {/* Abstract visual */}
-                <div className="relative w-56 h-56 sm:w-64 sm:h-64 mb-12" key={`visual-${current}`} style={slideStyle}>
-                    <AbstractBackground variant={screen.variant} className="absolute inset-0 overflow-hidden pointer-events-none" />
-                </div>
+            <div className="flex-1 flex flex-col items-center justify-center w-full max-w-md mx-auto px-8 relative z-10">
+                {/* Visuals */}
+                {screen.isLogo && (
+                    <div className="relative flex items-center justify-center w-full mb-8" key={`visual-${current}`} style={slideStyle}>
+                       {/* Subtle glow behind the logo */}
+                       <div className="absolute inset-0 bg-primary/10 blur-[80px] rounded-full pointer-events-none w-64 h-64 mx-auto" />
+                    </div>
+                )}
 
                 {/* Text */}
-                <div className="text-center" key={`text-${current}`} style={slideStyle}>
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
-                        {screen.title}
-                    </h2>
-                    <p className="text-zinc-400 text-base sm:text-lg font-light leading-relaxed max-w-xs mx-auto">
-                        {screen.description}
-                    </p>
+                <div className={`text-center ${screen.isLogo ? '-mt-24' : 'mt-12'}`} key={`text-${current}`} style={slideStyle}>
+                    {screen.isLogo ? (
+                        <h1 className="text-5xl sm:text-7xl font-bold tracking-[0.2em] font-headline text-on-surface mb-6 drop-shadow-[0_0_15px_rgba(192,193,255,0.3)]">
+                            {screen.title}
+                        </h1>
+                    ) : (
+                        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-on-surface font-headline mb-6 drop-shadow-md">
+                            {screen.title}
+                        </h2>
+                    )}
+                    
+                    {screen.description && (
+                        <p className="text-on-surface-variant text-base sm:text-lg font-medium leading-relaxed max-w-xs mx-auto drop-shadow-sm">
+                            {screen.description}
+                        </p>
+                    )}
                 </div>
             </div>
 
             {/* ─── Bottom controls ─── */}
-            <div className="w-full max-w-md mx-auto px-8 pb-12 flex flex-col items-center gap-8">
+            <div className="w-full max-w-md mx-auto px-8 pb-12 flex flex-col items-center gap-8 relative z-20">
                 {/* Dot indicators */}
                 <div className="flex items-center gap-3">
                     {screens.map((_, i) => (
@@ -122,8 +152,8 @@ export default function OnboardingPage() {
                             onClick={() => goTo(i, i > current ? "left" : "right")}
                             aria-label={`Go to screen ${i + 1}`}
                             className={`rounded-full transition-all duration-300 ${i === current
-                                ? "w-8 h-2 bg-white"
-                                : "w-2 h-2 bg-zinc-600 hover:bg-zinc-400"
+                                ? "w-8 h-2 lit-gradient"
+                                : "w-2 h-2 bg-surface-high hover:bg-outline"
                                 }`}
                         />
                     ))}
@@ -131,21 +161,34 @@ export default function OnboardingPage() {
 
                 {/* Action button */}
                 {isLast ? (
-                    <Link
-                        href="/signin"
-                        className="w-full h-14 bg-white text-black rounded-full text-[15px] font-semibold tracking-wide flex items-center justify-center hover:bg-zinc-100 active:scale-[0.97] transition-all duration-300"
+                    <button
+                        onClick={() => router.push("/signup")}
+                        className="w-full h-14 lit-gradient text-background rounded-full text-[15px] font-bold tracking-wide flex items-center justify-center hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(192,193,255,0.3)]"
                     >
-                        Sign In
-                    </Link>
+                        Sign-up
+                    </button>
                 ) : (
                     <button
                         onClick={goNext}
-                        className="w-full h-14 border border-zinc-700 text-white rounded-full text-[15px] font-semibold tracking-wide flex items-center justify-center hover:border-zinc-500 hover:bg-white/5 active:scale-[0.97] transition-all duration-300"
+                        className="w-full h-14 ghost-border bg-surface-low text-on-surface rounded-full text-[15px] font-bold tracking-wide flex items-center justify-center hover:bg-surface-high hover:border-outline active:scale-[0.98] transition-all duration-300"
                     >
-                        Continue
+                        Next
                     </button>
                 )}
             </div>
+
+            {/* Global style for sliding animations */}
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                @keyframes slideLeft {
+                    from { opacity: 0; transform: translateX(30px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes slideRight {
+                    from { opacity: 0; transform: translateX(-30px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+            `}} />
         </div>
     );
 }

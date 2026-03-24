@@ -58,7 +58,8 @@ export async function middleware(req: NextRequest) {
 
     const isPublicRoute = req.nextUrl.pathname === '/' ||
                           req.nextUrl.pathname.startsWith('/privacy') ||
-                          req.nextUrl.pathname.startsWith('/terms')
+                          req.nextUrl.pathname.startsWith('/terms') ||
+                          req.nextUrl.pathname.startsWith('/onboarding')
 
     if (session && isAuthRoute) {
       return NextResponse.redirect(new URL('/home', req.url))

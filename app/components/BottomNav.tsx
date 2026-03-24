@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, CheckSquare, Sparkles, Settings } from "lucide-react"
+import { Home, CheckSquare, Sparkles, Archive, Settings } from "lucide-react"
 import { useEffect, useState } from "react"
 
 const navItems = [
@@ -20,6 +20,11 @@ const navItems = [
     icon: Sparkles,
     label: "Plans",
     href: "/plans",
+  },
+  {
+    icon: Archive,
+    label: "Vault",
+    href: "/vault",
   },
   {
     icon: Settings,

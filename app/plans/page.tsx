@@ -7,7 +7,7 @@ import Questionnaire from '../components/Questionnaire';
 import PlanDisplay from '../components/PlanDisplay';
 import { UserProfile } from '../types';
 import { supabase } from '../lib/supabase';
-import { generateSelfImprovementPlan, extractHabitsFromPlan } from '../services/deepseekService';
+import { generateSelfImprovementPlan, extractHabitsFromPlan } from '../services/aiService';
 
 // ─── Loading State ─────────────────────────────────────────────────────────
 

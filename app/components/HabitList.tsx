@@ -11,6 +11,7 @@ interface HabitListProps {
     isLoading?: boolean;
     onToggle: (habitId: string) => void;
     onAddHabit: () => void;
+    onDelete?: (habitId: string) => void;
 }
 
 export default function HabitList({
@@ -19,6 +20,7 @@ export default function HabitList({
     isLoading = false,
     onToggle,
     onAddHabit,
+    onDelete,
 }: HabitListProps) {
     if (isLoading) {
         return (
@@ -70,6 +72,7 @@ export default function HabitList({
                             habit={habit}
                             isCompleted={completedIds.includes(habit.id)}
                             onToggle={() => onToggle(habit.id)}
+                            onDelete={onDelete}
                         />
                     </div>
                 ))}

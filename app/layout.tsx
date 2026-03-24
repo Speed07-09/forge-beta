@@ -11,9 +11,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Forge – Transform Through Consistency",
-  description:
-    "A focused 30-day program designed to rewire your routines and unlock your potential.",
+  title: 'FORGE - AI-Powered 30-Day Transformation',
+  description: 'Generate personalized fitness plans and track daily habits',
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icon.png',
+    apple: '/app-icon.png',
+  },
 };
 
 export default function RootLayout({

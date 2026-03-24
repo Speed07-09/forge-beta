@@ -226,6 +226,41 @@ function TrackerContent() {
         [loadData, showToast]
     );
 
+    // ─── Delete a custom habit ─────────────────────────────────────────────
+    const handleDeleteHabit = useCallback(
+        async (habitId: string) => {
+            // Safety guard: only custom habits can be deleted
+            const habit = habits.find((h) => h.id === habitId);
+            if (!habit || !habit.is_custom) return;
+
+            // Optimistic update
+            setHabits((prev) => prev.filter((h) => h.id !== habitId));
+            setCompletedIds((prev) => prev.filter((id) => id !== habitId));
+
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                if (!user) throw new Error('Not authenticated');
+
+                const { error } = await supabase
+                    .from('habits')
+                    .delete()
+                    .eq('id', habitId)
+                    .eq('user_id', user.id)
+                    .eq('is_custom', true); // double-guard on the server side
+
+                if (error) throw error;
+
+                showToast('Custom habit removed.');
+                await loadMetrics(user.id);
+            } catch {
+                // Rollback
+                await loadData();
+                showToast('Failed to delete habit. Please try again.', 'error');
+            }
+        },
+        [habits, loadData, loadMetrics, showToast]
+    );
+
     return (
         <div className="min-h-screen bg-background text-on-surface pb-[120px] font-body">
             <div className="max-w-2xl mx-auto px-6 py-12 md:px-8 md:py-16 space-y-12 md:space-y-16">
@@ -261,6 +296,7 @@ function TrackerContent() {
                         isLoading={isLoading}
                         onToggle={handleToggle}
                         onAddHabit={() => setShowAddModal(true)}
+                        onDelete={handleDeleteHabit}
                     />
 
                     {!isLoading && (
