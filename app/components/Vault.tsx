@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { supabase } from '../lib/supabase';
-import PlanDisplay from './PlanDisplay';
 import { SupabasePlan } from '../types';
 import { Trash2 } from 'lucide-react';
 
@@ -77,18 +77,17 @@ function DeleteModal({
 
 function PlanCard({
     plan,
-    onView,
     onDeleteRequest,
 }: {
     plan: SupabasePlan;
-    onView: (plan: SupabasePlan) => void;
     onDeleteRequest: (id: string) => void;
 }) {
+    const router = useRouter();
     return (
         <div className="group relative ghost-border rounded-2xl bg-surface-low hover:bg-surface-high hover:border-outline transition-all duration-300 shadow-md">
             {/* Clickable body */}
             <button
-                onClick={() => onView(plan)}
+                onClick={() => router.push(`/vault/${plan.id}`)}
                 className="w-full text-left p-6 md:p-8 focus:outline-none active:scale-[0.98]"
             >
                 {/* Date */}
@@ -145,43 +144,12 @@ function VaultSkeleton() {
     );
 }
 
-// ─── Full Plan Viewer (modal overlay) ───────────────────────────────────────
-
-function PlanViewer({
-    plan,
-    onClose,
-}: {
-    plan: SupabasePlan;
-    onClose: () => void;
-}) {
-    return (
-        <div className="fixed inset-0 z-[60] flex flex-col bg-background font-body overflow-y-auto">
-            {/* Sticky back bar */}
-            <div className="sticky top-0 z-10 bg-background/80 glass-panel border-b border-outline-variant px-6 py-4 flex items-center gap-4">
-                <button
-                    onClick={onClose}
-                    className="flex items-center gap-2 text-on-surface-variant hover:text-primary text-[11px] font-bold tracking-[0.15em] uppercase transition-colors"
-                >
-                    ← Back to Vault
-                </button>
-                <span className="text-outline-variant">/</span>
-                <span className="text-primary text-[11px] font-bold tracking-[0.15em] uppercase">{formatDate(plan.created_at)}</span>
-            </div>
-
-            <div className="max-w-2xl mx-auto px-6 pt-12 pb-32 w-full">
-                <PlanDisplay plan={plan.content} />
-            </div>
-        </div>
-    );
-}
-
 // ─── Main Vault Component ────────────────────────────────────────────────────
 
 export default function Vault() {
     const [plans, setPlans] = useState<SupabasePlan[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [fetchError, setFetchError] = useState<string | null>(null);
-    const [viewingPlan, setViewingPlan] = useState<SupabasePlan | null>(null);
     const [deletingId, setDeletingId] = useState<string | null>(null);
     const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
@@ -286,16 +254,10 @@ export default function Vault() {
                     <PlanCard
                         key={plan.id}
                         plan={plan}
-                        onView={setViewingPlan}
                         onDeleteRequest={setPendingDeleteId}
                     />
                 ))}
             </div>
-
-            {/* Full plan viewer */}
-            {viewingPlan && (
-                <PlanViewer plan={viewingPlan} onClose={() => setViewingPlan(null)} />
-            )}
 
             {/* Delete confirmation modal */}
             {pendingDeleteId && (
