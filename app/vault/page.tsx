@@ -5,7 +5,7 @@ import Vault from '../components/Vault';
 
 function VaultContent() {
     return (
-        <div className="min-h-screen bg-background text-on-surface font-body pb-[120px]">
+        <div className="min-h-screen bg-background text-on-surface font-body page-bottom-padding">
 
             {/* Header */}
             <header className="fixed top-0 w-full bg-background/80 glass-panel border-b border-outline-variant z-50">

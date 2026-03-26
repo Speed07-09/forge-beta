@@ -515,7 +515,8 @@ function HomeContent() {
       <button
         onClick={() => router.push('/tracker')}
         aria-label="Open tracker"
-        className="fixed bottom-[110px] right-6 w-14 h-14 rounded-full flex items-center justify-center ambient-shadow lit-gradient transition-all duration-300 hover:scale-110 active:scale-95 z-40"
+        className="fixed right-6 w-14 h-14 rounded-full flex items-center justify-center ambient-shadow lit-gradient transition-all duration-300 hover:scale-110 active:scale-95 z-40"
+        style={{ bottom: 'calc(88px + env(safe-area-inset-bottom) + 16px)' }}
       >
         <span className="material-symbols-outlined text-background font-bold" style={{ fontSize: '26px', fontVariationSettings: "'wght' 600" }}>add</span>
       </button>

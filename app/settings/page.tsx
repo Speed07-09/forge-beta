@@ -39,7 +39,7 @@ function Toast({
         type === 'success' ? CheckCircle2 : type === 'error' ? XCircle : AlertTriangle
 
     return (
-        <div className={`fixed bottom-[110px] left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 rounded-[16px] border bg-surface-high text-on-surface text-[14px] font-bold shadow-xl ${colors}`} style={{ animation: 'fadeInUp 225ms ease-out both' }}>
+        <div className={`fixed left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 rounded-[16px] border bg-surface-high text-on-surface text-[14px] font-bold shadow-xl ${colors}`} style={{ bottom: 'calc(88px + env(safe-area-inset-bottom) + 16px)', animation: 'fadeInUp 225ms ease-out both' }}>
             <Icon className="w-5 h-5 shrink-0" />
             {message}
         </div>
@@ -229,7 +229,7 @@ function SettingsContent() {
     const initials = getInitials(username || null, email)
 
     return (
-        <div className="min-h-screen bg-background text-on-surface font-body pb-[120px]">
+        <div className="min-h-screen bg-background text-on-surface font-body page-bottom-padding">
             <div className="max-w-2xl mx-auto px-6 py-12 md:px-8 md:py-16">
 
                 {/* Header */}

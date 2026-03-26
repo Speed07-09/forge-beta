@@ -152,7 +152,7 @@ export default function PlansPage() {
 
             {/* All other states use the padded layout */}
             {step !== 'questionnaire' && (
-                <div className="min-h-screen bg-background font-body pb-[120px]">
+                <div className="min-h-screen bg-background font-body page-bottom-padding">
                     {/* Header */}
                     <header className="fixed top-0 w-full bg-background/80 glass-panel border-b border-outline-variant z-50">
                         <div className="max-w-2xl mx-auto px-6 h-16 flex items-center justify-between">

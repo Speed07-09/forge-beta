@@ -35,10 +35,11 @@ function Toast({
 }) {
     return (
         <div
-            className={`fixed bottom-[110px] left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-full text-sm font-bold border animate-[fadeInUp_225ms_ease-out] ${type === "error"
+            className={`fixed left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-full text-sm font-bold border animate-[fadeInUp_225ms_ease-out] ${type === "error"
                 ? "bg-surface-high border-red-500/30 text-red-400"
                 : "bg-surface-high ghost-border text-on-surface"
                 }`}
+            style={{ bottom: 'calc(88px + env(safe-area-inset-bottom) + 16px)' }}
         >
             {message}
         </div>
@@ -262,7 +263,7 @@ function TrackerContent() {
     );
 
     return (
-        <div className="min-h-screen bg-background text-on-surface pb-[120px] font-body">
+        <div className="min-h-screen bg-background text-on-surface page-bottom-padding font-body">
             <div className="max-w-2xl mx-auto px-6 py-12 md:px-8 md:py-16 space-y-12 md:space-y-16">
                 {/* Header */}
                 <header

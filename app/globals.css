@@ -126,6 +126,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Safe area utilities ── */
+
+/* Padding that pushes content below the status bar / notch */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Padding that pushes content above the home indicator */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/*
+ * Page-level bottom padding:
+ * Fixed nav height (88px) + the device's home-indicator inset.
+ * Pages with pb-[120px] should switch to this class.
+ */
+.page-bottom-padding {
+  padding-bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
 /* ── Endel animations — 225ms enter, 195ms exit ── */
 
 @keyframes fadeIn {

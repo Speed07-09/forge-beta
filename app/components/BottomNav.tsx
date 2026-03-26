@@ -44,8 +44,8 @@ export function BottomNav() {
   // Prevent hydration mismatch
   if (!mounted) {
     return (
-      <nav className="fixed bottom-0 left-0 right-0 z-50 h-[88px] glass-panel border-t border-outline-variant">
-        <div className="flex items-center justify-around h-full max-w-lg mx-auto px-6 pb-4">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 glass-panel border-t border-outline-variant" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+        <div className="flex items-center justify-around h-[88px] max-w-lg mx-auto px-6 pb-4">
           {/* Render placeholder to maintain layout */}
         </div>
       </nav>
@@ -54,11 +54,12 @@ export function BottomNav() {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 h-[88px] glass-panel border-t border-outline-variant"
+      className="fixed bottom-0 left-0 right-0 z-50 glass-panel border-t border-outline-variant"
       role="navigation"
       aria-label="Main navigation"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
-      <div className="flex items-center justify-around h-full max-w-lg mx-auto px-6 pb-4 pt-2">
+      <div className="flex items-center justify-around h-[88px] max-w-lg mx-auto px-6 pb-4 pt-2">
         {navItems.map((item) => {
           const isActive = pathname === item.href || 
             (item.href !== "/home" && pathname.startsWith(item.href))
