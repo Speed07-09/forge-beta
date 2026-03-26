@@ -57,7 +57,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="FORGE" />
-        <link rel="apple-touch-icon" href="/app-icon.png" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-black text-white`}>
         <PWARegister />

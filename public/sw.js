@@ -1,7 +1,8 @@
-const CACHE_NAME = 'forge-v1';
+const CACHE_NAME = 'forge-v2';
 const urlsToCache = [
   '/',
-  '/icon.png',
+  '/icon-192.png',
+  '/icon-512.png',
   '/app-icon.png',
 ];
 
