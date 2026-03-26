@@ -285,24 +285,42 @@ function HomeContent() {
           <div className="relative rounded-2xl overflow-hidden bg-surface-low ghost-border animate-glow-pulse halo-glow">
             <div className="relative p-6">
               <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-on-surface-variant mb-3">30-Day Program</p>
-              <h3 className="text-xl font-bold text-on-surface leading-snug mb-1 font-headline">
-                Generate Your Personalized
-              </h3>
-              <h3 className="text-xl font-bold text-primary leading-snug mb-6 font-headline">
-                30-Day Plan
-              </h3>
-              {latestPlan && (
-                <p className="text-sm text-on-surface-variant mb-6 leading-relaxed line-clamp-2">
-                  {latestPlan.content.replace(/#+\s/g, '').replace(/\*/g, '').trim().slice(0, 100)}…
-                </p>
+              {latestPlan ? (
+                <>
+                  <h3 className="text-xl font-bold text-on-surface leading-snug mb-1 font-headline">
+                    {displayName}&apos;s
+                  </h3>
+                  <h3 className="text-xl font-bold text-primary leading-snug mb-6 font-headline">
+                    30 Day Journey
+                  </h3>
+                  <p className="text-sm text-on-surface-variant mb-6 leading-relaxed line-clamp-2">
+                    {latestPlan.content.replace(/#+\s/g, '').replace(/\*/g, '').trim().slice(0, 120)}…
+                  </p>
+                  <button
+                    onClick={() => router.push('/plans')}
+                    className="flex items-center justify-center w-full gap-2 lit-gradient text-background text-[15px] font-bold px-6 py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  >
+                    View / Regenerate Plan
+                    <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <h3 className="text-xl font-bold text-on-surface leading-snug mb-1 font-headline">
+                    Generate Your Personalized
+                  </h3>
+                  <h3 className="text-xl font-bold text-primary leading-snug mb-6 font-headline">
+                    30-Day Plan
+                  </h3>
+                  <button
+                    onClick={() => router.push('/plans')}
+                    className="flex items-center justify-center w-full gap-2 lit-gradient text-background text-[15px] font-bold px-6 py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  >
+                    Generate Plan
+                    <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+                  </button>
+                </>
               )}
-              <button
-                onClick={() => router.push('/plans')}
-                className="flex items-center justify-center w-full gap-2 lit-gradient text-background text-[15px] font-bold px-6 py-4 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-              >
-                Generate Plan
-                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
-              </button>
             </div>
           </div>
         </section>
