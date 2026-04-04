@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ConditionalBottomNav } from "@/app/components/ConditionalBottomNav";
 import EndelBackground from "@/app/components/EndelBackground";
 import PWARegister from "@/app/components/PWARegister";
+import InstallPrompt from "@/app/components/InstallPrompt";
 import "./globals.css";
 
 const inter = Inter({
@@ -62,6 +63,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-black text-white`}>
         <PWARegister />
+        <InstallPrompt />
         <EndelBackground />
         {children}
         <ConditionalBottomNav />

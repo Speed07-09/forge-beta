@@ -1,14 +1,25 @@
-const CACHE_NAME = 'forge-v2';
+const CACHE_NAME = 'forge-v3';
+
+// Precache individually so one failed URL (e.g. offline) does not abort the whole service worker on Android.
 const urlsToCache = [
   '/',
   '/icon-192.png',
   '/icon-512.png',
   '/app-icon.png',
+  '/manifest.json',
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      await Promise.all(
+        urlsToCache.map((url) =>
+          cache.add(url).catch(() => {
+            /* non-fatal — installability still satisfied if SW activates */
+          })
+        )
+      );
+    })
   );
   self.skipWaiting();
 });

@@ -4,18 +4,7 @@ import { usePathname } from 'next/navigation'
 import { BottomNav } from './BottomNav'
 import { useEffect, useState } from 'react'
 
-// Pages where bottom nav should NOT appear
-const EXCLUDED_ROUTES = [
-  '/',
-  '/signin',
-  '/signup',
-  '/onboarding',
-  '/auth/callback',
-  '/privacy',
-  '/terms',
-  '/admin',
-  '/plans',
-]
+import { isBottomNavExcluded } from '@/app/lib/bottomNavRoutes'
 
 export function ConditionalBottomNav() {
   const pathname = usePathname()
@@ -32,12 +21,7 @@ export function ConditionalBottomNav() {
   }
   
   // Don't show on excluded routes
-  if (EXCLUDED_ROUTES.includes(pathname)) {
-    return null
-  }
-  
-  // Don't show on auth routes
-  if (pathname.startsWith('/auth/')) {
+  if (isBottomNavExcluded(pathname)) {
     return null
   }
   
