@@ -130,21 +130,25 @@ body {
 
 /* Padding that pushes content below the status bar / notch */
 .safe-top {
-  padding-top: env(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 /* Padding that pushes content above the home indicator */
 .safe-bottom {
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Fixed headers: add below iOS status bar / Dynamic Island (use with inner h-16 / h-20 / h-[88px] row) */
+.fixed-header-safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 /*
  * Page-level bottom padding:
  * Fixed nav height (88px) + the device's home-indicator inset.
- * Pages with pb-[120px] should switch to this class.
  */
 .page-bottom-padding {
-  padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
 }
 
 /* ── Endel animations — 225ms enter, 195ms exit ── */

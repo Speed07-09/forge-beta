@@ -249,24 +249,26 @@ function HomeContent() {
   }
 
   return (
-    <div className="min-h-screen bg-surface-lowest font-body">
+    <div className="min-h-screen bg-surface-lowest font-body page-bottom-padding">
 
       {/* ── Fixed Header ── */}
-      <header className="fixed top-0 left-0 right-0 z-50 h-[88px] flex items-center justify-between px-6 glass-panel border-b border-outline-variant transition-all">
-        <span className="text-sm font-bold tracking-[0.25em] text-on-surface uppercase select-none">
-          FORGE
-        </span>
-        <button
-          onClick={() => router.push('/settings')}
-          aria-label="Settings"
-          className="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-high transition-all duration-200"
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>settings</span>
-        </button>
+      <header className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-outline-variant transition-all fixed-header-safe-top">
+        <div className="h-[88px] flex items-center justify-between px-6">
+          <span className="text-sm font-bold tracking-[0.25em] text-on-surface uppercase select-none">
+            FORGE
+          </span>
+          <button
+            onClick={() => router.push('/settings')}
+            aria-label="Settings"
+            className="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-high transition-all duration-200"
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>settings</span>
+          </button>
+        </div>
       </header>
 
       {/* ── Main Scroll Area ── */}
-      <main className="pt-28 px-6 max-w-lg mx-auto space-y-6 pb-40">
+      <main className="pt-[calc(7rem+env(safe-area-inset-top,0px))] px-6 max-w-lg mx-auto space-y-6 pb-8">
 
         {/* ── Greeting ── */}
         <section style={{ animation: 'fadeInUp 280ms ease-out both' }}>
@@ -516,7 +518,7 @@ function HomeContent() {
         onClick={() => router.push('/tracker')}
         aria-label="Open tracker"
         className="fixed right-6 w-14 h-14 rounded-full flex items-center justify-center ambient-shadow lit-gradient transition-all duration-300 hover:scale-110 active:scale-95 z-40"
-        style={{ bottom: 'calc(88px + env(safe-area-inset-bottom) + 16px)' }}
+        style={{ bottom: 'calc(88px + env(safe-area-inset-bottom, 0px) + 16px)' }}
       >
         <span className="material-symbols-outlined text-background font-bold" style={{ fontSize: '26px', fontVariationSettings: "'wght' 600" }}>add</span>
       </button>

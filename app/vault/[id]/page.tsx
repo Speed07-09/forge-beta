@@ -34,9 +34,9 @@ function PlanDetailContent() {
     }, [params.id, router]);
 
     return (
-        <div className="min-h-screen bg-background text-on-surface font-body">
+        <div className="min-h-screen bg-background text-on-surface font-body page-bottom-padding">
             {/* Header */}
-            <header className="fixed top-0 w-full bg-background/80 glass-panel border-b border-outline-variant z-50">
+            <header className="fixed top-0 w-full bg-background/80 glass-panel border-b border-outline-variant z-50 fixed-header-safe-top">
                 <div className="max-w-2xl mx-auto px-4 sm:px-6 h-16 flex items-center gap-4">
                     <button
                         onClick={() => router.push('/vault')}
@@ -58,7 +58,7 @@ function PlanDetailContent() {
             </header>
 
             {/* Content — normal page flow, browser handles scroll */}
-            <main className="max-w-2xl mx-auto px-4 sm:px-6 pt-24 pb-24">
+            <main className="max-w-2xl mx-auto px-4 sm:px-6 pt-[calc(6rem+env(safe-area-inset-top,0px))] pb-24">
                 {loading && (
                     <div className="space-y-4 animate-pulse pt-8">
                         <div className="h-10 bg-surface-high rounded-xl w-3/4" />

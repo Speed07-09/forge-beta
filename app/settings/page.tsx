@@ -39,7 +39,7 @@ function Toast({
         type === 'success' ? CheckCircle2 : type === 'error' ? XCircle : AlertTriangle
 
     return (
-        <div className={`fixed left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 rounded-[16px] border bg-surface-high text-on-surface text-[14px] font-bold shadow-xl ${colors}`} style={{ bottom: 'calc(88px + env(safe-area-inset-bottom) + 16px)', animation: 'fadeInUp 225ms ease-out both' }}>
+        <div className={`fixed left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 rounded-[16px] border bg-surface-high text-on-surface text-[14px] font-bold shadow-xl ${colors}`} style={{ bottom: 'calc(88px + env(safe-area-inset-bottom, 0px) + 16px)', animation: 'fadeInUp 225ms ease-out both' }}>
             <Icon className="w-5 h-5 shrink-0" />
             {message}
         </div>
@@ -230,7 +230,7 @@ function SettingsContent() {
 
     return (
         <div className="min-h-screen bg-background text-on-surface font-body page-bottom-padding">
-            <div className="max-w-2xl mx-auto px-6 py-12 md:px-8 md:py-16">
+            <div className="max-w-2xl mx-auto px-6 pt-[calc(3rem+env(safe-area-inset-top,0px))] pb-12 md:px-8 md:pt-[calc(4rem+env(safe-area-inset-top,0px))] md:pb-16">
 
                 {/* Header */}
                 <div className="mb-12 md:mb-16" style={{ animation: 'fadeInUp 225ms ease-out both' }}>

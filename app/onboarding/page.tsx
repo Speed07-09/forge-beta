@@ -102,7 +102,13 @@ export default function OnboardingPage() {
 
             {/* Skip */}
             {!isLast && (
-                <div className="absolute top-6 right-6 z-20">
+                <div
+                    className="absolute z-20"
+                    style={{
+                        top: 'calc(1.5rem + env(safe-area-inset-top, 0px))',
+                        right: 'calc(1.5rem + env(safe-area-inset-right, 0px))',
+                    }}
+                >
                     <Link
                         href="/signup"
                         className="text-sm font-bold tracking-wide uppercase text-on-surface-variant hover:text-on-surface transition-colors duration-300"
@@ -143,7 +149,7 @@ export default function OnboardingPage() {
             </div>
 
             {/* ─── Bottom controls ─── */}
-            <div className="w-full max-w-md mx-auto px-8 pb-12 flex flex-col items-center gap-8 relative z-20">
+            <div className="w-full max-w-md mx-auto px-8 pb-[calc(3rem+env(safe-area-inset-bottom,0px))] flex flex-col items-center gap-8 relative z-20">
                 {/* Dot indicators */}
                 <div className="flex items-center gap-3">
                     {screens.map((_, i) => (

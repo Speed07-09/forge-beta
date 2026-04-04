@@ -44,7 +44,7 @@ export function BottomNav() {
   // Prevent hydration mismatch
   if (!mounted) {
     return (
-      <nav className="fixed bottom-0 left-0 right-0 z-50 glass-panel border-t border-outline-variant" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+      <nav className="fixed bottom-0 left-0 right-0 z-50 glass-panel border-t border-outline-variant" style={{ paddingBottom: 'max(8px, env(safe-area-inset-bottom, 0px))' }}>
         <div className="flex items-center justify-around h-[88px] max-w-lg mx-auto px-6 pb-4">
           {/* Render placeholder to maintain layout */}
         </div>
@@ -57,7 +57,9 @@ export function BottomNav() {
       className="fixed bottom-0 left-0 right-0 z-50 glass-panel border-t border-outline-variant"
       role="navigation"
       aria-label="Main navigation"
-      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      style={{
+        paddingBottom: 'max(8px, env(safe-area-inset-bottom, 0px))',
+      }}
     >
       <div className="flex items-center justify-around h-[88px] max-w-lg mx-auto px-6 pb-4 pt-2">
         {navItems.map((item) => {

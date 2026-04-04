@@ -154,7 +154,7 @@ export default function PlansPage() {
             {step !== 'questionnaire' && (
                 <div className="min-h-screen bg-background font-body page-bottom-padding">
                     {/* Header */}
-                    <header className="fixed top-0 w-full bg-background/80 glass-panel border-b border-outline-variant z-50">
+                    <header className="fixed top-0 w-full bg-background/80 glass-panel border-b border-outline-variant z-50 fixed-header-safe-top">
                         <div className="max-w-2xl mx-auto px-6 h-16 flex items-center justify-between">
                             <div className="flex items-center gap-4 cursor-pointer" onClick={() => router.push('/home')}>
                                 <span className="text-on-surface-variant hover:text-primary text-[11px] font-bold uppercase tracking-[0.15em] transition-colors">
@@ -176,7 +176,7 @@ export default function PlansPage() {
                         </div>
                     </header>
 
-                    <main className="max-w-2xl mx-auto px-6 pt-28 md:pt-32">
+                    <main className="max-w-2xl mx-auto px-6 pt-[calc(7rem+env(safe-area-inset-top,0px))] md:pt-[calc(8rem+env(safe-area-inset-top,0px))]">
                         {/* Header Content */}
                         <div className="mb-12" style={{ animation: 'fadeInUp 225ms ease-out both' }}>
                             <h2 className="text-3xl md:text-5xl font-bold text-on-surface mb-4 tracking-tight font-headline">

@@ -39,7 +39,7 @@ function Toast({
                 ? "bg-surface-high border-red-500/30 text-red-400"
                 : "bg-surface-high ghost-border text-on-surface"
                 }`}
-            style={{ bottom: 'calc(88px + env(safe-area-inset-bottom) + 16px)' }}
+            style={{ bottom: 'calc(88px + env(safe-area-inset-bottom, 0px) + 16px)' }}
         >
             {message}
         </div>
@@ -264,7 +264,7 @@ function TrackerContent() {
 
     return (
         <div className="min-h-screen bg-background text-on-surface page-bottom-padding font-body">
-            <div className="max-w-2xl mx-auto px-6 py-12 md:px-8 md:py-16 space-y-12 md:space-y-16">
+            <div className="max-w-2xl mx-auto px-6 pt-[calc(3rem+env(safe-area-inset-top,0px))] pb-12 md:px-8 md:pt-[calc(4rem+env(safe-area-inset-top,0px))] md:pb-16 space-y-12 md:space-y-16">
                 {/* Header */}
                 <header
                     className="space-y-3"

@@ -86,7 +86,7 @@ export default function AppUpdateBanner() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-[110] flex items-center justify-center gap-3 px-4 py-3 pt-[max(12px,env(safe-area-inset-top))] border-b border-outline-variant bg-surface-low/95 backdrop-blur-md shadow-lg font-body"
+      className="fixed top-0 left-0 right-0 z-[110] flex items-center justify-center gap-3 px-4 py-3 pt-[max(12px,env(safe-area-inset-top,0px))] border-b border-outline-variant bg-surface-low/95 backdrop-blur-md shadow-lg font-body"
       role="status"
       aria-live="polite"
     >

@@ -388,7 +388,10 @@ export default function PlanDisplay({
 
             {/* Share toast */}
             {shareToast && (
-                <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-6 py-4 rounded-full border border-zinc-800 bg-black text-white text-sm font-normal" style={{ animation: 'fadeInUp 225ms ease-out both' }}>
+                <div
+                    className="fixed left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-6 py-4 rounded-full border border-zinc-800 bg-black text-white text-sm font-normal"
+                    style={{ animation: 'fadeInUp 225ms ease-out both', bottom: 'calc(88px + env(safe-area-inset-bottom, 0px) + 24px)' }}
+                >
                     Link copied to clipboard
                 </div>
             )}

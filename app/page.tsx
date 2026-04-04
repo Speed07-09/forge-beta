@@ -37,21 +37,23 @@ export default function LandingPage() {
   return (
     <div className="relative min-h-screen bg-background text-on-surface selection:bg-primary/20 selection:text-primary font-body">
       {/* 0. NAVIGATION */}
-      <nav className="fixed top-0 left-0 right-0 z-50 h-20 bg-background/80 glass-panel border-b border-outline-variant flex items-center justify-between px-4 md:px-12">
-        <div className="text-on-surface hover:text-primary font-bold tracking-[0.2em] text-xl cursor-default select-none transition-colors duration-300 font-headline">
-          FORGE
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 glass-panel border-b border-outline-variant px-4 md:px-12 fixed-header-safe-top">
+        <div className="h-20 flex items-center justify-between">
+          <div className="text-on-surface hover:text-primary font-bold tracking-[0.2em] text-xl cursor-default select-none transition-colors duration-300 font-headline">
+            FORGE
+          </div>
+          <button
+            onClick={() => router.push("/signin")}
+            className="text-on-surface-variant hover:text-primary transition-colors text-sm font-bold tracking-wide uppercase"
+          >
+            Sign In
+          </button>
         </div>
-        <button
-          onClick={() => router.push("/signin")}
-          className="text-on-surface-variant hover:text-primary transition-colors text-sm font-bold tracking-wide uppercase"
-        >
-          Sign In
-        </button>
       </nav>
 
       <main className="flex flex-col">
         {/* 1. HERO SECTION */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 px-4 md:px-6 overflow-hidden bg-background">
+        <section className="relative min-h-screen flex flex-col items-center justify-center pt-[calc(5rem+env(safe-area-inset-top,0px))] px-4 md:px-6 overflow-hidden bg-background">
           {/* Abstract Background positioned absolutely behind content */}
           <div className="absolute inset-0 z-0 flex items-center justify-center opacity-70 pointer-events-none">
             <AbstractBackground variant="wave" />
