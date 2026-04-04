@@ -61,7 +61,7 @@ export function BottomNav() {
     >
       <div className="flex items-center justify-around h-[88px] max-w-lg mx-auto px-6 pb-4 pt-2">
         {navItems.map((item) => {
-          const isActive = pathname === item.href || 
+          const isActive = pathname === item.href ||
             (item.href !== "/home" && pathname.startsWith(item.href))
           const Icon = item.icon
 
@@ -69,15 +69,14 @@ export function BottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center justify-center min-w-[64px] gap-1.5 transition-all duration-300 ${
-                isActive ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
-              }`}
+              className={`flex flex-col items-center justify-center min-w-[64px] gap-1.5 transition-all duration-300 ${isActive ? "text-primary" : "text-on-surface-variant hover:text-on-surface"
+                }`}
               aria-label={item.label}
               aria-current={isActive ? "page" : undefined}
             >
               <div className="relative flex items-center justify-center h-8 w-8 transition-transform duration-300">
-                <Icon 
-                  className={`w-6 h-6 transition-all duration-300 ${isActive ? 'scale-110 drop-shadow-[0_0_12px_rgba(192,193,255,0.4)] text-primary' : 'scale-100 text-on-surface-variant'}`} 
+                <Icon
+                  className={`w-6 h-6 transition-all duration-300 ${isActive ? 'scale-110 drop-shadow-[0_0_12px_rgba(192,193,255,0.4)] text-primary' : 'scale-100 text-on-surface-variant'}`}
                   strokeWidth={2}
                   fill={isActive ? "currentColor" : "none"}
                 />
