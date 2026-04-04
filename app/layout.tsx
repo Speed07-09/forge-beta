@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ConditionalBottomNav } from "@/app/components/ConditionalBottomNav";
 import EndelBackground from "@/app/components/EndelBackground";
 import PWARegister from "@/app/components/PWARegister";
+import AppUpdateBanner from "@/app/components/AppUpdateBanner";
 import InstallPrompt from "@/app/components/InstallPrompt";
 import "./globals.css";
 
@@ -63,6 +64,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-black text-white`}>
         <PWARegister />
+        <AppUpdateBanner />
         <InstallPrompt />
         <EndelBackground />
         {children}
